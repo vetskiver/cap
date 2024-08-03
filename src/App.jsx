@@ -56,18 +56,26 @@ function App() {
   };
 
   const callAPI = async (query) => {
-    const response = await fetch(query);
-    const json = await response.json();
-    if (json.url == null) {
-      alert("Oops! Something went wrong with that query, let's try again!")
-        }
-    else {
-      setCurrentImage(json.url);
-      setPrevImages((images) => [...images, json.url]);
-      reset();
-      getQuota();
+    try {
+      const response = await fetch(query);
+      if (!response.ok) {
+        throw new Error(`HTTP error! Status: ${response.status}`);
+      }
+      const json = await response.json();
+      if (json.url == null) {
+        alert("Oops! Something went wrong with that query, let's try again!");
+      } else {
+        setCurrentImage(json.url);
+        setPrevImages((images) => [...images, json.url]);
+        reset();
+        getQuota();
+      }
+    } catch (error) {
+      console.error("API Call Error:", error);
+      alert("An error occurred while fetching the image. Please try again.");
     }
   };
+  
 
   const reset = () => {
     setInputs({
