@@ -1,8 +1,8 @@
-# Screenshot Screenshotter
+# Cab
 
 ## Description
 
-Screenshot Screenshotter is a web application that allows users to capture high-quality screenshots of websites using the ApiFlash API. This app enables users to enter a URL and specify various parameters to customize the screenshots. The main features include making API calls to capture screenshots, displaying the current screenshot, and maintaining a gallery of all screenshots taken.
+Cab is a web application that allows users to capture high-quality screenshots of websites using the ApiFlash API. This app enables users to enter a URL and specify various parameters to customize the screenshots. The main features include making API calls to capture screenshots, displaying the current screenshot, and maintaining a gallery of all screenshots taken.
 
 ## Features
 
