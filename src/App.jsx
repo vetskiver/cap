@@ -4,6 +4,8 @@ import APIForm from './components/APIForm';
 const ACCESS_KEY = import.meta.env.VITE_APP_ACCESS_KEY;
 
 function App() {
+  const [currentImage, setCurrentImage] = useState(null);
+
   const [inputs, setInputs] = useState({
     url: "",
     format: "",
@@ -13,6 +15,7 @@ function App() {
     height: "",
   });
   const submitForm = () => {
+
     let defaultValues = {
       format: "jpeg",
       no_ads: "true",
@@ -21,7 +24,7 @@ function App() {
       height: "1080",
     };
     if (inputs.url == "" || inputs.url == " ") {
-      alert("You forgot to submit an url!")
+      alert("You forgot to submit an url!");
     } else {
       for (const [key, value] of Object.entries(inputs)) {
         if (value == "") {
@@ -41,8 +44,6 @@ function App() {
     let query = `https://api.apiflash.com/v1/urltoimage?access_key=${ACCESS_KEY}&url=${fullURL}&format=${inputs.format}&width=${inputs.width}&height=${inputs.height}&no_cookie_banners=${inputs.no_cookie_banners}&no_ads=${inputs.no_ads}&wait_until=${wait_until}&response_type=${response_type}&fail_on_status=${fail_on_status}`;
     callAPI(query).catch(console.error);
   };
-
-  const [currentImage, setCurrentImage] = useState(null);
 
   const callAPI = async (query) => {
     const response = await fetch(query);
